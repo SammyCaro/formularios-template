@@ -1,1 +1,40 @@
-<p>basicos works!</p>
+<h2>Template: Básicos</h2>
+<hr>
+
+<div class="row">
+  <div class="col">
+    <form>
+      <!-- campo producto -->
+      <div class="mb-3 row">
+        <label for="producto" class="col-sm-3 col-form-label">Productos</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" id="producto" placeholder="Nombre del producto">
+          <span class="form-text text-danger">Debe de ser de 3 letras</span>
+        </div>
+      </div>
+
+      <!-- campo precio -->
+      <div class="mb-3 row">
+        <label for="precio" class="col-sm-3 col-form-label">Precio</label>
+        <div class="col-sm-9">
+          <input type="number" class="form-control" id="precio" placeholder="Precio del producto">
+        </div>
+      </div>
+
+      <!-- existencias -->
+      <div class="mb-3 row">
+        <label for="existencias" class="col-sm-3 col-form-label">Existencias</label>
+        <div class="col-sm-9">
+          <input type="number" class="form-control" id="existencias" placeholder="Stock del producto">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <button type="submit" class="btn btn-primary float-end">Guardar</button>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</div>
