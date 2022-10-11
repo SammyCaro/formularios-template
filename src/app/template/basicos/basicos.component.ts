@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -6,11 +6,21 @@ import { NgForm } from '@angular/forms';
   templateUrl: './basicos.component.html',
 })
 export class BasicosComponent implements OnInit {
+  @ViewChild('miFormulario') miFormulario!: NgForm;
+
   constructor() {}
 
   ngOnInit(): void {}
 
-  guardar(form: NgForm) {
-    console.log(form.value);
+  nombreValido(): boolean {
+    return (
+      /* en este caso el input debe cumplir con la condición de tener 3 letras mínimo */
+      this.miFormulario?.controls['producto'].invalid &&
+      this.miFormulario?.controls['producto'].touched
+    );
+  }
+
+  guardar() {
+    console.log(this.miFormulario);
   }
 }
