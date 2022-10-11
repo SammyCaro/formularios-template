@@ -6,6 +6,7 @@ import { NgForm } from '@angular/forms';
   templateUrl: './basicos.component.html',
 })
 export class BasicosComponent implements OnInit {
+  /* Obtención de la referencia local del formulario */
   @ViewChild('miFormulario') miFormulario!: NgForm;
 
   constructor() {}
@@ -15,8 +16,15 @@ export class BasicosComponent implements OnInit {
   nombreValido(): boolean {
     return (
       /* en este caso el input debe cumplir con la condición de tener 3 letras mínimo */
-      this.miFormulario?.controls['producto'].invalid &&
-      this.miFormulario?.controls['producto'].touched
+      this.miFormulario?.controls['producto']?.invalid &&
+      this.miFormulario?.controls['producto']?.touched
+    );
+  }
+
+  precioValido(): boolean {
+    return (
+      this.miFormulario?.controls['precio']?.touched &&
+      this.miFormulario?.controls['precio']?.value < 0
     );
   }
 
