@@ -31,11 +31,24 @@ export class DinamicosComponent {
     ],
   };
 
+  nuevoJuego: string = '';
+
   validarNombre() {
     return (
       this.miFormulario?.controls['nombre']?.invalid &&
       this.miFormulario?.controls['nombre']?.touched
     );
+  }
+
+  agregar() {
+    const nuevoFavorito: Favorito = {
+      id: this.persona.favoritos.length + 1,
+      nombre: this.nuevoJuego,
+    };
+
+    this.persona.favoritos.push({ ...nuevoFavorito });
+    this.nuevoJuego = '';
+    console.log(this.persona.favoritos);
   }
 
   eliminar(index: number) {

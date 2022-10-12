@@ -19,8 +19,9 @@
     <div class="col-sm-9">
 
       <div class="input-group">
-        <input type="text" class="form-control" placeholder="Agregar favorito" name="favorito">
-        <button class="btn btn-outline-primary" type="button">Agregar</button>
+        <input type="text" class="form-control" [(ngModel)]="nuevoJuego" placeholder="Agregar favorito" name="favorito"
+          (keyup.enter)="agregar()">
+        <button class="btn btn-outline-primary" (click)="agregar()" type="button">Agregar</button>
       </div>
 
     </div>
