@@ -10,7 +10,7 @@
         <div class="col-sm-9">
 
           <input type="text" class="form-control" id="producto" placeholder="Nombre del producto" name="producto"
-            ngModel autocomplete="off" required minlength="3">
+            [ngModel]="setFormValues.producto" autocomplete="off" required minlength="3">
 
           <span *ngIf="nombreValido()" class="form-text text-danger">Debe de ser de 3 letras</span>
         </div>
