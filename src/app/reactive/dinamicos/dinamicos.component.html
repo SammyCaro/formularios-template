@@ -19,8 +19,9 @@
     <div class="col-sm-9">
 
       <div class="input-group">
-        <input type="text" class="form-control" placeholder="Agregar favorito" name="favorito">
-        <button class="btn btn-outline-primary" type="button">Agregar</button>
+        <input type="text" class="form-control" placeholder="Agregar favorito" name="favorito"
+          [formControl]="nuevoFavorito" (keyup.enter)="agregarFavorito()">
+        <button class="btn btn-outline-primary" (click)="agregarFavorito()" type="button">Agregar</button>
       </div>
 
     </div>
@@ -54,3 +55,7 @@
 <br>
 <span>Valid</span>
 <pre>{{ miFormulario.valid }}</pre>
+<br>
+<span>Agregar Juego</span>
+<pre>{{ nuevoFavorito.valid }}</pre>
+<pre>{{ nuevoFavorito.value }}</pre>
