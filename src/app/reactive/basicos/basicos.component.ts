@@ -12,10 +12,17 @@ export class BasicosComponent {
   }); */
 
   miFormulario: FormGroup = this.formBuilder.group({
-    nombre: ['RTX 3080', [Validators.required, Validators.minLength(3)]],
-    precio: [0, [Validators.required, Validators.min(0)]],
-    existencias: [0, [Validators.required, Validators.min(0)]],
+    nombre: [, [Validators.required, Validators.minLength(3)]],
+    precio: [, [Validators.required, Validators.min(0)]],
+    existencias: [, [Validators.required, Validators.min(0)]],
   });
 
   constructor(private formBuilder: FormBuilder) {}
+
+  campoNoValido(campo: string) {
+    return (
+      this.miFormulario.controls[campo]?.invalid &&
+      this.miFormulario.controls[campo]?.touched
+    );
+  }
 }
