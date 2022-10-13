@@ -1,14 +1,15 @@
 <h2>Reactivos: <small>Dinámicos</small></h2>
 <hr>
 
-<form autocomplete="off">
+<form autocomplete="off" (ngSubmit)="guardar()" [formGroup]="miFormulario">
 
   <!-- campo nombre -->
   <div class="row mb-3">
     <label for="nombre" class="col-sm-3 col-form-label">Nombre</label>
     <div class="col-sm-9">
-      <input type="text" class="form-control" placeholder="Nombre de la persona">
-      <span class="form-text text-danger">Este campo es obligatorio</span>
+      <input type="text" class="form-control" placeholder="Nombre de la persona" formControlName="nombre">
+      <span *ngIf="campoNoValido('nombre')" class="form-text text-danger">Campo obligatorio y debe tener 3 o más
+        caracteres</span>
     </div>
   </div>
 
@@ -28,21 +29,28 @@
   <!-- campo lista de juegos favoritos -->
   <div class="row mb-3">
     <label for="nombre" class="col-sm-3 col-form-label">Favoritos</label>
-    <div class="col-sm-9">
-      <div class="input-group mb-1">
-        <input type="text" class="form-control">
+
+    <div class="col-sm-9" formArrayName="favoritos">
+      <div class="input-group mb-1" *ngFor="let favorito of favoritosArr.controls; let i = index">
+        <input type="text" class="form-control" [formControlName]="i">
         <button class="btn btn-outline-danger" type="button">Eliminar</button>
       </div>
     </div>
+
   </div>
 
   <div class="row">
     <div class="col-sm-12">
-      <button type="button" class="btn btn-primary float-end">Guardar</button>
+      <button type="submit" [disabled]="miFormulario.invalid" class="btn btn-primary float-end">Guardar</button>
     </div>
   </div>
 
 </form>
 
-<!-- <span>Persona</span>
-<pre>{{ persona | json }}</pre> -->
+<br>
+<br>
+<span>Value</span>
+<pre>{{ miFormulario.value | json }}</pre>
+<br>
+<span>Valid</span>
+<pre>{{ miFormulario.valid }}</pre>
